@@ -6,13 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.login.jwt.auth.model.Usuario;
+import com.login.jwt.auth.security.PasswordEncoder;
 import com.login.jwt.auth.service.persistence.UsuarioPersistence;
 
 @Service
 public class UsuarioLocalService {
-    
+
     public Usuario criarUsuario(Usuario usuario) {
-        return usuarioPersistence.save(usuario);
+        Usuario usuarioDB = new Usuario();
+
+        usuarioDB.setLogin(usuario.getLogin());
+        usuarioDB.setSenha(passwordEncoder.bCryptPasswordEncoder().encode(usuario.getSenha()));
+        usuarioDB.setNome(usuario.getNome());
+        usuarioDB.setSenha(usuario.getSenha());
+        usuarioDB.setEmail(usuario.getEmail());
+
+        return usuarioPersistence.save(usuarioDB);
     }
 
     public List<Usuario> obterUsuarios() {
@@ -21,4 +30,7 @@ public class UsuarioLocalService {
 
     @Autowired
     private UsuarioPersistence usuarioPersistence;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 }
