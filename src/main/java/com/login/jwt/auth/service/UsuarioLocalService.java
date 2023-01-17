@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.login.jwt.auth.configuration.security.PasswordEncoder;
 import com.login.jwt.auth.model.Usuario;
-import com.login.jwt.auth.security.PasswordEncoder;
 import com.login.jwt.auth.service.persistence.UsuarioPersistence;
 
 @Service
