@@ -1,4 +1,4 @@
-package com.login.jwt.auth.security;
+package com.login.jwt.auth.configuration.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
